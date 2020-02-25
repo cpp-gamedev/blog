@@ -1,0 +1,9 @@
+baseURL = "http://todo.example.org/"
+languageCode = "en-us"
+title = "CPP GameDev"
+theme = "m10c"
+
+[params]
+author = "karnage"
+description = "Discussion around the gamedev"
+avatar = "cppgamedev.jpg"
