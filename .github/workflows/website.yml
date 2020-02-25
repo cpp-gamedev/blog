@@ -1,0 +1,31 @@
+name: website
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - # https://github.com/actions/checkout
+        name: Checkout
+        uses: actions/checkout@v1
+      - # https://github.com/crazy-max/ghaction-hugo
+        name: Hugo
+        uses: crazy-max/ghaction-hugo@v1
+        with:
+          version: latest
+          args: --cleanDestinationDir --minify --verbose
+      - # https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-deploy_key
+        name: Deploy
+        if: success() && github.event_name != 'pull_request'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          disable_nojekyll: true
