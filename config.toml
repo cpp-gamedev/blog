@@ -1,4 +1,4 @@
-baseURL = "http://todo.example.org/"
+baseURL = "/"
 languageCode = "en-us"
 title = "CPP GameDev"
 theme = "m10c"
@@ -7,3 +7,11 @@ theme = "m10c"
 author = "karnage"
 description = "Discussion around the gamedev"
 avatar = "cppgamedev.jpg"
+
+[[params.social]]
+  name = "github"
+  url = "https://github.com/cpp-gamedev"
+
+[[params.social]]
+  name = "discord"
+  url = "https://discord.gg/2NvA5jn"
