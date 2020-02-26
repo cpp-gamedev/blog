@@ -1,9 +1,8 @@
 ---
-title: 'Link to Chronoblog Theme'
-cover: ./image.jpg
+title: 'cpp-gamedev on GitHub'
 date: 2019-11-12
-link: https://github.com/Chronoblog/gatsby-theme-chronoblog
-tags: ['link', 'project']
+link: https://github.com/cpp-gamedev
+tags: ['links']
 ---
 
 **Link card** is a card, when clicked, the user goes to the specified link.

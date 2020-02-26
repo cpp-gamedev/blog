@@ -1,0 +1,3 @@
+[submodule "themes/notepadium"]
+	path = themes/notepadium
+	url = https://github.com/cntrump/hugo-notepadium.git

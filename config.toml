@@ -1,0 +1,25 @@
+baseURL = "https://mdaffin.github.io/blog/"
+languageCode = "en-us"
+title = "CPP GameDev"
+theme = "notepadium"
+enableRobotsTXT = true
+
+[params]
+style = "dark"
+dateFormat = "Monday, January 2, 2006"
+logo = "cppgamedev.jpg"
+slogan = "Discussion around the gamedev"
+license = ""
+
+[params.nav]
+showCategories = true
+showTags = true
+
+[[params.nav.custom]]
+title = "github"
+url = "https://github.com/cpp-gamedev"
+
+
+[[params.nav.custom]]
+title = "discord"
+url = "https://discord.gg/2NvA5jn"
