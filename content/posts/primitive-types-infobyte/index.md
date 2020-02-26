@@ -4,7 +4,7 @@ cover: ./primitive-programmer.jpg
 date: 2020-02-24
 description: C++ primitive data types
 categories: ['posts']
-tags: ['infobytes']
+tags: ['infobytes', 'c++']
 ---
 
 ### Primitive Data Types

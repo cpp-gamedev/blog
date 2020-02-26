@@ -1,9 +1,9 @@
 ---
 title: Memory Management
-date: 2020-02-26
+date: 2020-02-25
 description: C++ memory management
 categories: ['posts']
-tags: ['infobytes']
+tags: ['infobytes', 'c++']
 ---
 
 ### Memory management
