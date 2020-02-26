@@ -1,4 +1,4 @@
-baseURL = "https://mdaffin.github.io/blog/"
+baseURL = "https://cpp-gamdev.netlify.com/"
 languageCode = "en-us"
 title = "CPP GameDev"
 theme = "notepadium"
