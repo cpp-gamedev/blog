@@ -1,10 +1,10 @@
----
-title: February Challenges
-cover: ./Cpp-Image.png
-date: 2020-02-01
-description: C++ learning and warm ups
-tags: ['challenges']
----
++++
+title="February Challenges"
+cover="cpp-image.png"
+date="2020-02-01"
+description="C++ learning and warm ups"
+tags= ['challenges']
++++
 
 ### Number of words in a string
 
