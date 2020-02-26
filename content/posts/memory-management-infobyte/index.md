@@ -1,6 +1,6 @@
 ---
 title: Memory Management
-date: 2020-02-24
+date: 2020-02-26
 description: C++ memory management
 categories: ['posts']
 tags: ['infobytes']
