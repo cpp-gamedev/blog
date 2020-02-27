@@ -5,12 +5,12 @@ description: Outline of common-ground topics for project collaborators to cover
 categories: ['collab']
 tags: ['projects']
 ---
-<style>
-  li { line-height: .2;}
-</style>
 
 ### C++ Basics
 **Environment Setup**
+<style>
+  li { line-height: .2;}
+</style>
  - CMake basics
  - Dealing with paths  - preprocessor vs working directory vs runtime directory, relative vs absolute
  - Limiting symbols in global scope (everything is global by default)
