@@ -8,7 +8,8 @@ enableRobotsTXT = true
 style = "dark"
 dateFormat = "Monday, January 2, 2006"
 logo = "cppgamedev.jpg"
-slogan = "Discussion around the gamedev"
+slogan = "Discussion around C++ game programming"
+mainSections = ["posts", "collab", "challenges"]
 license = ""
 
 [params.nav]

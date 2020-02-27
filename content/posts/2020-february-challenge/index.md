@@ -1,8 +1,9 @@
 ---
 title: February Challenges
-cover: ./Cpp-Image.png
+cover: ./cpp-image.png
 date: 2020-02-01
 description: C++ learning and warm ups
+categories: ['posts']
 tags: ['challenges']
 ---
 
