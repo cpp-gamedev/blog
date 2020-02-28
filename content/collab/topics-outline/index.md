@@ -10,10 +10,6 @@ tags: ['projects']
 
 **Environment Setup**
 
-<style>
-  li { margin-bottom: -10px;}
-</style>
-
 - CMake basics
 - Dealing with paths - preprocessor vs working directory vs runtime directory, relative vs absolute
 - Limiting symbols in global scope (everything is global by default)
