@@ -6,10 +6,9 @@ categories: ['collab']
 tags: ['projects']
 ---
 
-### C++ Basics
+### Pre-3D Topics
 
 **Environment Setup**
-
 - CMake basics
 - Dealing with paths - preprocessor vs working directory vs runtime directory, relative vs absolute
 - Limiting symbols in global scope (everything is global by default)
@@ -17,23 +16,25 @@ tags: ['projects']
 - Enabling useful compiler warnings
 
 **I/O, OS, code scope**
-
 - Generic types vs fixed-size types
 - Manual memory management
-- `<iostream>`, `std::getline`, `std::string`/`std::string_view`, `std::atoi`, etc
-  `<fstream>`, `<random>`, `std::stringstream`, `std::vector`, `std::unordered_map`, `std::unordered_set`, `std::list`, `std::deque`, `std::filesystem`, `std::bitset`
+- IO and type conversions: `<iostream>`, `std::getline`, `std::string`/`std::string_view`, `std::atoi`, etc
+- Containers:  `std::stringstream`, `std::vector`, `std::unordered_map`, `std::unordered_set`, `std::list`, `std::deque`, `std::bitset`
+- Files: `<fstream>`, `std::filesystem`
+- Random generation: `<random>`
+- Template functions
 
-**Advanced STL**
-
+**Advanced C++**
 - Move semantics
 - Iterators
 - `<algorithm>` (find, find_if, for_each, any_of, all_of, rotate, transform)
 - Functors and lambdas (immediate vs deferred, lifetime issues with captures)
 - `<functional>`
 - `std::unique_ptr`, `std::shared_ptr`, `std::weak_ptr`
+- Template classes
+- SFINAE
 
 **Game Fundamentals**
-
 - Measuring time
 - Input state machines
 - Lifetime-aware Callbacks/Delegates
