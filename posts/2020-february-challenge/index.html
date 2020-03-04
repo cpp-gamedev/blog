@@ -1,0 +1,23 @@
+<!doctype html><html lang=en><meta charset=utf-8><meta name=generator content="Hugo 0.65.3"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name=color-scheme content="light dark"><meta name=supported-color-schemes content="light dark"><title>February Challenges&nbsp;&ndash;&nbsp;CPP GameDev</title><link rel=stylesheet href=/css/core.min.350463598a0d573d76ab4b07af8573e375f4ecedd88570d214cd6fcfeff9d18d24161335c46a7c6c438b307e881e21ce.css integrity=sha384-NQRjWYoNVz12q0sHr4Vz43X07O3YhXDSFM1vz+/50Y0kFhM1xGp8bEOLMH6IHiHO><body><div class=base-body><section id=header class="site header"><div class="header wrap"><span class="header left-side"><a class="site home" href=/><img class="site logo" src=/cppgamedev.jpg alt><span class="site name">CPP GameDev</span></a></span>
+<span class="header right-side"><div class="nav wrap"><nav class=nav><a class="nav item" href=/categories/>Categories</a><a class="nav item" href=/tags/>Tags</a><a class="nav item" href=https://github.com/cpp-gamedev target=_blank>github</a><a class="nav item" href=https://discord.gg/2NvA5jn target=_blank>discord</a></nav></div></span></div><div class="site slogan"><span class=title>Discussion around C++ game programming</span></div></section><div id=content><div class=article-container><section class="article header"><h1 class="article title">February Challenges</h1><p class="article date">Saturday, February 1, 2020</p></section><article class="article markdown-body"><p><img class=cover src=./cpp-image.png alt></p><h3 id=number-of-words-in-a-string>Number of words in a string</h3><p>Mini exercise: count the number of words in a string.
+<strong>bonus points</strong>: count the number of characters in each word
+<em>Note: you can do both in one pass</em></p><h3 id=short-exercise>Short Exercise:</h3><ol><li>Create a function to &ldquo;bisect&rdquo; a string given a delimiter: <code>"id=fubar", '='</code> should return <code>id</code> and <code>fubar</code>.
+Prototype:</li></ol><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp>std<span style=color:#f92672>::</span>pair<span style=color:#f92672>&lt;</span>std<span style=color:#f92672>::</span>string, std<span style=color:#f92672>::</span>string<span style=color:#f92672>&gt;</span>
+bisect(std<span style=color:#f92672>::</span>string_view str, <span style=color:#66d9ef>char</span> delim);
+</code></pre></div><ul><li><code>pair</code> can be found in <code>&lt;utility></code>.</li><li><code>string_view</code> instead of <code>string const&</code> allows for use of string literals / C strings without suffering a pointless <code>string</code> allocation.</li></ul><ol start=2><li>Create a function to read the contents of a file at a given path into a vector of strings, each representing a line.</li></ol><pre><code>// File:
+tag=fubar
+xp=523
+
+// Result:
+{&quot;tag=fubar&quot;, &quot;xp=523&quot;}
+</code></pre><p>Prototype:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp>std<span style=color:#f92672>::</span>vector<span style=color:#f92672>&lt;</span>std<span style=color:#f92672>::</span>string<span style=color:#f92672>&gt;</span> readString(std<span style=color:#f92672>::</span>string_view path);
+</code></pre></div><ol start=3><li>Use the above functions to read a configuration file into the fields of a struct.
+Eg:</li></ol><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>SaveData</span>
+{
+  std<span style=color:#f92672>::</span>string username;
+  s32 windowWidth;
+  s32 windowHeight;
+  <span style=color:#66d9ef>bool</span> bFullscreen;
+  <span style=color:#66d9ef>bool</span> bVsync;
+};
+</code></pre></div></article><section class="article labels"><a class=category href=/categories/posts/>posts</a><a class=tag href=/tags/challenges/>challenges</a></section></div><section class="article navigation"><p><a class=link href=/posts/primitive-types-infobyte/><span class=li>&larr;</span>Primitive Data Types</a></p></section></div><section id=footer class=footer><div class=footer-wrap><p class=copyright>CPP GameDev</p><p class=powerby><span>Powered by </span><a href=https://gohugo.io target=_blank>Hugo</a><span> and the </span><a href=https://themes.gohugo.io/hugo-notepadium/ target=_blank>Notepadium</a></p></div></section></div></body></html>
