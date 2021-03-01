@@ -22,29 +22,31 @@ tags: ['projects']
 - Containers:  `std::stringstream`, `std::vector`, `std::unordered_map`, `std::unordered_set`, `std::list`, `std::deque`, `std::bitset`
 - Files: `<fstream>`, `std::filesystem`
 - Random generation: `<random>`
-- Template functions
+- Function templates
 
 **Advanced C++**
 - Move semantics
-- Iterators
-- `<algorithm>` (find, find_if, for_each, any_of, all_of, rotate, transform)
-- Functors and lambdas (immediate vs deferred, lifetime issues with captures)
-- `<functional>`
+- Customization points (operator overloading, custom iterators, etc)
+- `<algorithm>` (`find`, `find_if`, `for_each`, `any_of`, `rotate`, `transform`, `iota`)
+- Function objects (functors) and lambdas (immediate vs deferred, lifetime issues with captures)
+- `<functional>`, basic callback design
 - `std::unique_ptr`, `std::shared_ptr`, `std::weak_ptr`
-- Template classes
-- SFINAE
+- Class templates
+- Explicit specializations, SFINAE
+- Static (compile time) polymorphism
+- Performance optimizations
 
 **Game Fundamentals**
 - Measuring time
 - Input state machines
-- Lifetime-aware Callbacks/Delegates
+- Lifetime-aware callbacks ("Delegates")
 - Numerical integration via `deltaTime`
 - Linear interpolation
 - Event loops / game loops
 - Update method
-- Graphics APIs, introduction to OpenGL
+- SFML, graphics best practices
 
-**3D Maths**
+**3D**
 
 - Vectors: geometric interpretation, algebraic operations, multiplications
 - Matrices: geometric interpretation, algebraic operations, multiplications, transformations, translations, rotations, scaling, etc
@@ -52,3 +54,6 @@ tags: ['projects']
 - Cominbing matrix transformations
 - Model View Matrix pipeline
 - Simple problems in 3D space
+- Native graphics APIs (OpenGL, DirectX, Vulkan)
+- Depth buffers
+- Shaders
