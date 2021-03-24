@@ -9,7 +9,7 @@ style = "dark"
 dateFormat = "Monday, January 2, 2006"
 logo = "cppgamedev.jpg"
 slogan = "Discussion around C++ game programming"
-mainSections = ["posts", "collab", "challenges"]
+mainSections = ["posts", "series", "collab"]
 license = ""
 
 [params.nav]
