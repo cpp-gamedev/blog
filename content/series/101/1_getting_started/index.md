@@ -12,6 +12,8 @@ Please don't despair if none of this makes sense (yet), it will in due time. Thi
 
 > _**Note:** This series follows C++17_
 
+> _[**Next: Development Environment**](https://cpp-gamedev.netlify.app/series/101/2_development_environment/)_
+
 ### Targets
 
 1. Setup and build a single-file C++ project from scratch
