@@ -12,6 +12,12 @@ Please don't despair if none of this makes sense (yet), it will in due time. Thi
 
 > _**Note:** This series follows C++17_
 
+> _[**Next: Development Environment**](https://cpp-gamedev.netlify.app/series/101/2_development_environment/)_
+
+### Targets
+
+1. Setup and build a single-file C++ project from scratch
+
 ### Requirements
 
 1. Platform/OS: x64 Windows (10+), x64/ARM64 GNU/Linux (5.x+, any distribution): while other platforms / older versions may work, this guide has only been verified on these
