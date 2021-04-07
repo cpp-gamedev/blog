@@ -8,7 +8,7 @@ tags: [ 'intro', 'meta', 'fundamentals', 'compiler', 'interpreter', 'llvm' ]
 
 ### Preamble
 
-If you’re a beginner and started to learn C++ very recently, read the chapters
+If you're a beginner and started to learn C++ very recently, read the chapters
 Preprocessor, Compiler, Linker, and Conclusions first. For the most part, all
 definitions and explanations in these chapters are compiler-independent. Come
 back to this document later after you moved on from writing terminal applications
@@ -19,8 +19,8 @@ LLVM/Clang. See also the Appendix and Bibliography for further reading.
 
 For many developers who have primarily worked with interpreted languages such as
 Python or JavaScript in the past, learning C++ may seem like a daunting task at
-first: There’re many moving parts between your hello_world.cpp and final executable
-that you can’t simply ignore, especially if you’re keen on developing cross-platform
+first: There're many moving parts between your hello_world.cpp and final executable
+that you can't simply ignore, especially if you're keen on developing cross-platform
 programs or want to collaborate with developers who use a different operating system.
 In this document you will learn what is happening behind the scenes when you build
 a C++ project. After reading this text you should be able to explain the build
@@ -37,7 +37,7 @@ statement. These directives give rise to various events, such as
 - macro substitution (`#define`) to denote a sequence of text that is to be replaced
   by a definition.
 - conditional preprocessor directives (`#ifdef` or*  `#if defined`) for introducing
-  conditions under which segments of code shan’t compile**.
+  conditions under which segments of code shan't compile**.
 
 The preprocessor takes precedence over the compiler. Once this step is executed,
 all preprocessor directives are removed from the source file. Files that go through
@@ -77,7 +77,7 @@ The main purpose of a compiler is to translate a high-level language into a tran
 lower-level language, for example assembly. In [1], a compiler is defined as a program
 that automatically translates a program text into a suitable instruction sequence
 before it is processed by a computer where the text to be translated is called source
-code (or sometimes source text). Note that some compilers don’t use an assembler
+code (or sometimes source text). Note that some compilers don't use an assembler
 in an intermediate step at all, but rather directly emit byte code into an object
 file. In the simplest terms, an object file consists of three things:
 
@@ -91,8 +91,8 @@ code follows the rules of the C++ programming language. During this step the com
 also performs a series of optimization techniques where applicable (inter alia
 constant folding and function inlining) before the assembler transforms this
 intermediate product into object code. Bear in mind that many compilers turn off
-all optimizations by default to improve the debug experience. They’re the penultimate
-result of the compiling process and contain machine code with unresolved external
+all optimizations by default to improve the debug experience. They're the penultimate
+result of the build process and contain machine code with unresolved external
 dependencies that are fed into the linker in the next stage. Some compilers provide
 support for multiple languages or target architectures which is one of the many
 compelling reasons to use them over others. In comparison, a traditional static
@@ -148,7 +148,7 @@ Clang, it defines these flags as followed**:
 - `O4` (and higher): Currently equivalent to `-O3`.
 
 Building projects for release purposes is a whole topic on its own and is not
-going to be covered in this document in more detail.
+going to be covered in this document in any more detail.
 
 _*For a more thorough explanation visit: <https://www.gnu.org/licenses/rms-why-gplv3.html>_
 
@@ -247,7 +247,7 @@ Go, Rust or Swift and enables efficient code optimization. At its core, an IR mo
 consists of three things: target information, global symbols and miscellaneous
 other data.
 
-The target information usually starts with a pair of strings describing the target.
+The target information starts with a pair of strings describing the target.
 For example, the target layout string describes:
 
 - The endianness
@@ -273,7 +273,7 @@ is assigned exactly once which greatly simplifies control flow analysis. Phi
 instructions return one value from a set of incoming values based on the control
 flow path taken during execution to reach the phi instruction where each value is
 associated with a predecessor basic block. An instruction performs arithmetic
-operations or accesses the memory but doesn’t alter the flow of the program. The
+operations or accesses the memory but doesn't alter the flow of the program. The
 terminator instruction determines the control flow transfer once the basic block
 finishes its execution.
 
@@ -330,15 +330,15 @@ NumPy code into machine code by using the LLVM compiler library._
 _**Uses an interpreter written in RPython and a JIT compiler to translate the
 source code into machine code instructions._
 
-_***Targets Microsoft’s .NET framework and uses its JIT compiler to improve the
-program execution. This implementation also removes the python’s built-in GIL
+_***Targets Microsoft's .NET framework and uses its JIT compiler to improve the
+program execution time. This implementation also removes the python's built-in GIL
 (Global Interpreter Lock)._
 
 In CPython, memory is pooled in a single location for easy allocation and removal.
 Because memory allocation for all needed memory in the compiler registers that
 memory with the arena, a single call to free the arena is all that is needed to
 completely free all memory used by the compiler [6]. Python stores all data structures
-in a private heap which is managed by Python’s memory manager and can be divided
+in a private heap which is managed by Python's memory manager and can be divided
 into four distinct types [7]:
 
 1. Heap is a collection of all memory managed by Python.
@@ -418,13 +418,13 @@ explained in alphabetical order.
   module [8].
 - __NRVO__ (Named Return Value Optimization) is a compiler optimization that can
   remove instantiated intermediary objects that are unique. The compiler is able
-  to apply this technique if it is able to determine an object’s memory location
+  to apply this technique if it is able to determine an object's memory location
   inside a function where all paths return a unique object.
 - __Peephole Optimization__ is a compiler optimization technique that takes a
   small set of compiler-generated instructions (dicitur peephole) and replaces it
   with a functionally equivalent, but more performant set of instructions.
 - __RVO__ (Return Value Optimization) is a compiler optimization that involves
-  eliminating the temporary object created to hold a function’s return value.
+  eliminating the temporary object created to hold a function's return value.
 
 _*This is a non-exhaustive list of optimizations that is available to the compiler._
 
