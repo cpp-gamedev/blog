@@ -22,7 +22,7 @@ References:
 
 ### Prerequisites
 
-[**Visual Studio Code**](https://code.visualstudio.com/) is highly recommended and assumed as the default editor unless stated otherwise throughout the rest of this series. If you are comfortably fluent with editors and shells, feel free to adapt this guide to your preferred ones. Similarly, `ninja` and `clang++` are assumed as the build tool and compiler - these work on both Windows and Linux (and Android, technically), and require mostly identical workflows and setups. However, on Windows, Visual C++ (MSVC) is the defacto compiler and MSBuild the build system. Though not impossible, this is not trivial to integrate into a CMake / VSCode workflow, and is beyond the scope of this guide. `clang++` provides a `g++` like front-end but uses the native standard library runtime on both platforms, meaning it will link to libc++ / libstdc++ / MSVC, which required for it to work correctly (i.e., on Windows, you need to install Visual Studio and its C++ toolset regardless of which compiler you pick).
+[**Visual Studio Code**](https://code.visualstudio.com/) - proprietary / open source - is highly recommended and assumed as the default editor unless stated otherwise throughout the rest of this series. If you are comfortably fluent with editors and shells, feel free to adapt this guide to your preferred ones. Similarly, `ninja` and `clang++` are assumed as the build tool and compiler - these work on both Windows and Linux (and Android, technically), and require mostly identical workflows and setups. However, on Windows, Visual C++ (MSVC) is the defacto compiler and MSBuild the build system. Though not impossible, this is not trivial to integrate into a CMake / VSCode workflow, and is beyond the scope of this guide. `clang++` provides a `g++` like front-end but uses the native standard library runtime on both platforms, meaning it will link to libc++ / libstdc++ / MSVC, which required for it to work correctly (i.e., on Windows, you need to install Visual Studio and its C++ toolset regardless of which compiler you pick).
 
 **VSCode C++ Guides**
 
@@ -34,8 +34,9 @@ References:
 
 **Extensions**
 
-- [Microsoft C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) : Make sure to disable C/C++ Intellisense and squiggly lines etc - clangd will take over this part
-- [clangd](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-clangd)
+- Autocompletion, code navigation, etc: [clangd](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-clangd)
+- Debugging: [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb)
+  - Proprietary only: [Microsoft C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) (Make sure to disable C/C++ Intellisense and squiggly lines etc - clangd will take over this part)
 
 #### clangd
 
@@ -104,22 +105,40 @@ This is valid for both platforms, all shells, all generators (including GNU Make
 
 #### Debugging
 
-Unlike building, which just involved having the editor invoke a customised shell command, GUI debugging requires deeper integration with the editor, to orchestrate setting / removing breakpoints, watching variables / modifying memory, etc. VSCode facilitates this via the C/C++ plugin, which provides the front-end capabilities on the editor, and hooks up to a configured native debugger as the backend. This is controlled through `./.vscode/launch.json`, which drives the **Run and Debug** tab. To create the file, switch to the tab and select "create a launch.json file", and pick "C/C++" as the template ("GDB/LLDB" for Linux, "Windows" for Windows). Set `name` to be the label in the **Run and Debug** tab; assuming the binary to be at `./out/debug/foo`, modify `program` to be `${workspaceFolder}/out/debug/foo` (and any other relevant fields). Click the play button / press F5 to start debugging. Refer to the [**launch.json reference**](https://code.visualstudio.com/docs/cpp/launch-json-reference) for more details.
+Unlike building, which just involved having the editor invoke a customised shell command, GUI debugging requires deeper integration with the editor, to orchestrate setting / removing breakpoints, watching variables / modifying memory, etc. This is facilitated on VSCode via the CodeLLDB and (Microsoft) C/C++ plugins, which provides the front-end capabilities on the editor, and hooks up to a configured native debugger as the backend. This is controlled through `./.vscode/launch.json`, which drives the **Run and Debug** tab. To create the file, switch to the tab and select "create a launch.json file", and pick "LLDB" / "C/C++" as the template ("GDB/LLDB" for Linux, "Windows" for Windows). Set `name` to be the label in the **Run and Debug** tab; assuming the binary to be at `./out/debug/foo`, modify `program` to be `${workspaceRoot}/out/debug/foo` (and any other relevant fields). Click the play button / press F5 to start debugging. Refer to the [**launch.json reference**](https://code.visualstudio.com/docs/cpp/launch-json-reference) for more details.
 
 > _**Note:** Make sure `CMAKE_BUILD_TYPE` is set to `Debug` in `out/debug/CMakeCache.txt`, else there will be no debugging symbols generated during a build!_
 
-Linux:
+Linux (CodeLLDB):
 
 ```json
 {
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "(debug) Launch",
+      "type": "lldb",
+      "request": "launch",
+      "name": "launch (debug)",
+      "program": "${workspaceRoot}/out/debug/foo",
+      "cwd": "${workspaceRoot}",
+      "terminal": "integrated"
+    }
+  ]
+}
+```
+
+Linux (C/C++):
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/out/debug/foo",
-      "cwd": "${workspaceFolder}",
+      "name": "launch (debug)",
+      "program": "${workspaceRoot}/out/debug/foo",
+      "cwd": "${workspaceRoot}",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
@@ -132,18 +151,38 @@ Linux:
 }
 ```
 
-Windows:
+Windows (C/C++):
 
 ```json
 {
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "(debug) Launch",
       "type": "cppvsdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/out/debug/foo.exe",
-      "cwd": "${workspaceFolder}"
+      "name": "launch (debug)",
+      "program": "${workspaceRoot}/out/debug/foo.exe",
+      "cwd": "${workspaceRoot}"
+    }
+  ]
+}
+```
+
+Windows (CodeLLDB):
+
+> _**Note:** LLDB recommends using lld-link (to embed DWARF symbols) for debugging; set `CMAKE_LINKER` to `lld-link.exe` to enable this._
+
+```json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "launch (debug)",
+      "program": "${workspaceRoot}/out/debug/foo",
+      "cwd": "${workspaceRoot}",
+      "terminal": "console"
     }
   ]
 }
